@@ -30,7 +30,9 @@ function get_products(\DiDom\Document $document, \GuzzleHttp\Client $client)
     foreach($products as $prod){
         $url = 'https://sanit.by' . $prod->attr('href');
         echo "product {$product_cnt} {$url}\n";
-
+        if($product_cnt > 3){
+            break;
+        }
         $products_data[$product_cnt] = get_prod($document, $client, $url);
         $product_cnt++;
     }
